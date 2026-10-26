@@ -2,27 +2,56 @@
 @import "katex/dist/katex.min.css";
 
 :root {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --bg-app: #F7F6F3;
+  --surface: #FFFFFF;
+  --sidebar-bg: #FFFFFF;
+  --border-subtle: #EBEBE8;
+  --border-strong: #DCDCD6;
+  --text-main: #191919;
+  --text-muted: #6B6B66;
+  --accent-primary: #5551FF;
+  --accent-purple: #7E4FF5;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
 }
 
 code, pre, .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Custom smooth transitions */
-* {
-  box-sizing: border-box;
-}
-
-/* KaTeX custom sizing tweaks for clean reading */
+/* KaTeX custom sizing tweaks for crisp reading */
 .katex {
-  font-size: 1.05em;
+  font-size: 1.08em;
   text-rendering: geometricPrecision;
 }
 
 .katex-display {
-  margin: 0.75em 0 !important;
+  margin: 0.6em 0 !important;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0.25em 0;
+  padding: 0.2em 0;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D5D5CF;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B0B0A8;
 }
