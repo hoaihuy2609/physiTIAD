@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom smooth transitions */
+* {
+  box-sizing: border-box;
+}
+
+/* KaTeX custom sizing tweaks for clean reading */
+.katex {
+  font-size: 1.05em;
+  text-rendering: geometricPrecision;
+}
+
+.katex-display {
+  margin: 0.75em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25em 0;
+}
