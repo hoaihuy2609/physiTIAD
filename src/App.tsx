@@ -30,6 +30,7 @@ export const App: React.FC = () => {
   const [selectedType, setSelectedType] = useState<QuestionType | 'all'>('all');
   const [selectedLevel, setSelectedLevel] = useState<DifficultyLevel | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [fontMode, setFontMode] = useState<'modern' | 'academic'>('academic');
   
   // UI states
   const [showMatrixDrawer, setShowMatrixDrawer] = useState(false);
@@ -100,8 +101,34 @@ export const App: React.FC = () => {
 
         {/* Right Top Actions */}
         <div className="flex items-center gap-2.5">
+          {/* Font Mode Switcher */}
+          <div className="hidden sm:inline-flex items-center rounded-lg border border-[#E9E9E7] p-0.5 bg-[#F7F6F3]">
+            <button
+              onClick={() => setFontMode('academic')}
+              className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all cursor-pointer ${
+                fontMode === 'academic'
+                  ? 'bg-white text-slate-900 shadow-xs border border-[#E2E2DE] font-semibold'
+                  : 'text-slate-500 hover:text-slate-900'
+              }`}
+              title="Phông chữ Học thuật / Đề thi chuẩn (STIX Two / Times New Roman)"
+            >
+              Phông Đề thi (Times)
+            </button>
+            <button
+              onClick={() => setFontMode('modern')}
+              className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all cursor-pointer ${
+                fontMode === 'modern'
+                  ? 'bg-white text-slate-900 shadow-xs border border-[#E2E2DE] font-semibold'
+                  : 'text-slate-500 hover:text-slate-900'
+              }`}
+              title="Phông chữ Hiện đại (Be Vietnam Pro)"
+            >
+              Phông Hiện đại
+            </button>
+          </div>
+
           {/* Quick Search */}
-          <div className="relative hidden md:block w-64">
+          <div className="relative hidden md:block w-56">
             <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
@@ -319,6 +346,7 @@ export const App: React.FC = () => {
                   key={question.id}
                   question={question}
                   index={idx}
+                  fontMode={fontMode}
                   onToast={showToast}
                 />
               ))}

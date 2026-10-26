@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "katex/dist/katex.min.css";
 
 :root {
   --bg-app: #F7F6F3;
@@ -7,34 +6,73 @@
   --sidebar-bg: #FFFFFF;
   --border-subtle: #EBEBE8;
   --border-strong: #DCDCD6;
-  --text-main: #191919;
+  --text-main: #1A1A1A;
   --text-muted: #6B6B66;
-  --accent-primary: #5551FF;
-  --accent-purple: #7E4FF5;
 }
 
+/* Default to Be Vietnam Pro: The most pristine Vietnamese typography */
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-app);
   color: var(--text-main);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Class for Academic Paper Mode (STIX Two Text / Times New Roman) */
+.font-academic {
+  font-family: 'STIX Two Text', 'Times New Roman', Times, serif;
+}
+
+.font-modern {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 code, pre, .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* KaTeX custom sizing tweaks for crisp reading */
+/* ============================================================
+   KATEX MATH ENGINE CUSTOMIZATION (CHUẨN MATHTIAD & OVERLEAF)
+   ============================================================ */
+
+/* Đảm bảo KaTeX hiển thị sắc nét với kích thước cân đối với chữ tiếng Việt */
 .katex {
-  font-size: 1.08em;
+  font-size: 1.06em;
   text-rendering: geometricPrecision;
+  letter-spacing: 0.01em;
 }
 
+/* Căn chỉnh công thức inline vừa khít với baseline của chữ, không bị lệch hoặc nổi lên */
+.katex:not(.katex-display .katex) {
+  display: inline-block;
+  vertical-align: -0.06em;
+  padding: 0 0.1em;
+}
+
+/* Khối công thức riêng ($$) căn lề trái chuẩn sách giáo khoa Việt Nam */
 .katex-display {
   margin: 0.6em 0 !important;
+  text-align: left !important;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0.2em 0;
+  padding: 0.25em 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex-display > .katex {
+  text-align: left !important;
+  display: inline-block;
+}
+
+/* Tinh chỉnh nét phân số và dấu ngoặc của KaTeX không bị mảnh vỡ */
+.katex .frac-line {
+  border-bottom-width: 0.055em !important;
+}
+
+/* Căn chỉnh mũi tên vectơ cho các đại lượng Vật Lý (\vec{F}, \vec{v}, \vec{B}) */
+.katex .accent-body {
+  top: -0.1em;
 }
 
 /* Custom subtle scrollbar */

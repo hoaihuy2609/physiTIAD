@@ -20,6 +20,7 @@ interface QuestionCardProps {
   question: Question;
   index: number;
   mode?: 'practice' | 'teacher';
+  fontMode?: 'modern' | 'academic';
   onToast?: (msg: string) => void;
 }
 
@@ -27,6 +28,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   question,
   index,
   mode = 'practice',
+  fontMode = 'modern',
   onToast,
 }) => {
   const [showSolution, setShowSolution] = useState(false);
@@ -167,8 +169,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       </div>
 
       {/* 2. Question Stem */}
-      <div className="p-5 sm:p-6">
-        <div className="text-[15px] text-slate-900 leading-relaxed font-normal mb-5">
+      <div className={`p-5 sm:p-6 ${fontMode === 'academic' ? 'font-academic' : 'font-modern'}`}>
+        <div className={`leading-relaxed font-normal mb-5 ${fontMode === 'academic' ? 'text-[16px] text-[#111827]' : 'text-[15px] text-slate-900'}`}>
           <MathText content={question.stem} />
         </div>
 
@@ -210,7 +212,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   >
                     {label}
                   </span>
-                  <div className="text-sm leading-snug flex-1 pt-0.5">
+                  <div className={`leading-relaxed flex-1 pt-0.5 ${fontMode === 'academic' ? 'text-[15.5px]' : 'text-sm'}`}>
                     <MathText content={choice} />
                   </div>
                   {showResult && isCorrect && (
@@ -245,10 +247,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   }`}
                 >
                   <div className="flex items-start gap-2.5 flex-1">
-                    <span className="font-bold text-slate-900 text-sm shrink-0">
+                    <span className={`font-bold text-slate-900 shrink-0 ${fontMode === 'academic' ? 'text-base' : 'text-sm'}`}>
                       {st.id})
                     </span>
-                    <div className="text-sm leading-relaxed text-slate-800">
+                    <div className={`leading-relaxed text-slate-800 ${fontMode === 'academic' ? 'text-[15.5px]' : 'text-sm'}`}>
                       <MathText content={st.text} />
                       {isAnswered && st.explanation && (
                         <div className="mt-1 text-xs text-slate-500 flex items-start gap-1">
