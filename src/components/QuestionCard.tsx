@@ -135,7 +135,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     saSubmitted;
 
   return (
-    <article className="bg-white rounded-xl border border-[#E9E9E7] shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:border-[#D5D5CF] transition-all duration-150 mb-5 overflow-hidden">
+    <article className={`bg-white rounded-xl border border-[#E9E9E7] shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:border-[#D5D5CF] transition-all duration-150 mb-5 overflow-hidden ${fontMode === 'academic' ? 'font-academic' : 'font-modern'}`}>
       {/* 1. Header Bar */}
       <div className="px-5 py-3 border-b border-[#F1F0EC] bg-[#FCFCFA] flex flex-wrap items-center justify-between gap-2 text-xs">
         <div className="flex items-center gap-2">
@@ -213,7 +213,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                     {label}
                   </span>
                   <div className={`leading-relaxed flex-1 pt-0.5 ${fontMode === 'academic' ? 'text-[15.5px]' : 'text-sm'}`}>
-                    <MathText content={choice} />
+                    <MathText content={choice} inline={true} />
                   </div>
                   {showResult && isCorrect && (
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
@@ -251,11 +251,11 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       {st.id})
                     </span>
                     <div className={`leading-relaxed text-slate-800 ${fontMode === 'academic' ? 'text-[15.5px]' : 'text-sm'}`}>
-                      <MathText content={st.text} />
+                      <MathText content={st.text} inline={true} />
                       {isAnswered && st.explanation && (
                         <div className="mt-1 text-xs text-slate-500 flex items-start gap-1">
                           <span className="font-semibold text-slate-700">Giải thích:</span>
-                          <MathText content={st.explanation} />
+                          <MathText content={st.explanation} inline={true} />
                         </div>
                       )}
                     </div>
@@ -379,12 +379,12 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       {/* 4. Collapsible Solution */}
       {showSolution && (
         <div className="px-5 pb-5 pt-1 bg-[#FCFCFA] border-t border-[#F1F0EC]">
-          <div className="p-4 rounded-lg bg-white border border-[#E9E9E7] shadow-xs">
-            <div className="flex items-center gap-1.5 text-indigo-700 font-semibold text-xs mb-2">
+          <div className={`p-4 sm:p-5 rounded-lg bg-white border border-[#E9E9E7] shadow-xs ${fontMode === 'academic' ? 'font-academic text-[15.5px]' : 'font-modern text-[14.5px]'}`}>
+            <div className="flex items-center gap-1.5 text-indigo-700 font-semibold text-xs mb-3 pb-2 border-b border-slate-100">
               <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-              <span>Lời giải chi tiết</span>
+              <span className="tracking-wide uppercase font-sans">Hướng dẫn giải chi tiết</span>
             </div>
-            <div className="text-sm leading-relaxed text-slate-700">
+            <div className="leading-relaxed text-[#1F2937]">
               <MathText content={question.solution} />
             </div>
           </div>

@@ -19,18 +19,23 @@ export const SAMPLE_QUESTIONS: Question[] = [
       '$-85\\text{ J}$',
     ],
     correctChoice: 1, // B
-    solution: `**Phương pháp:**
-Áp dụng nguyên lí I nhiệt động lực học: $\\Delta U = A + Q$
+    solution: `**Phương pháp giải:**
 
-Quy ước về dấu của nhiệt lượng và công:
-- Hệ nhận nhiệt lượng: $Q > 0 \\implies Q = +60\\text{ J}$
-- Hệ sinh công (thực hiện công lên môi trường): $A < 0 \\implies A = -25\\text{ J}$
+Áp dụng nguyên lí I nhiệt động lực học:
+$$\\Delta U = A + Q$$
 
-**Cách giải:**
+Quy ước về dấu của nhiệt lượng $Q$ và công $A$:
+- Khối khí nhận nhiệt lượng:  
+  $$Q > 0 \\implies Q = +60\\text{ J}$$
+- Khối khí sinh công (thực hiện công lên môi trường):  
+  $$A < 0 \\implies A = -25\\text{ J}$$
+
+**Các bước tính toán:**
+
 Độ biến thiên nội năng của khối khí là:
 $$\\Delta U = A + Q = -25 + 60 = +35\\text{ J}$$
 
-Do $\\Delta U > 0$ nên nội năng của khối khí tăng $35\\text{ J}$.
+Vì $\\Delta U > 0$ nên nội năng của khối khí tăng $35\\text{ J}$.
 
 $\\implies$ **Chọn đáp án B.**`,
     source: 'Đề minh họa THPTQG 2025 - Bộ GD&ĐT',
@@ -73,21 +78,27 @@ $\\implies$ **Chọn đáp án B.**`,
         explanation: 'Vì chu trình là khép kín trở về đúng trạng thái ban đầu $(1)$ nên $\\Delta U_{\\text{chu trình}} = U_1 - U_1 = 0$.',
       },
     ],
-    solution: `**Lời giải chi tiết từng ý:**
+    solution: `**Phân tích & Hướng dẫn giải chi tiết:**
 
-- **a) ĐÚNG:** Quá trình $(1) \\to (2)$ là quá trình biến đổi đẳng áp ($p_1 = p_2 = 3 \\cdot 10^5\\text{ Pa}$).  
-Áp dụng định luật Gay-Lussac:  
-$$\\frac{V_1}{T_1} = \\frac{V_2}{T_2} \\implies T_2 = T_1 \\frac{V_2}{V_1} = 300 \\cdot \\frac{6}{2} = 900\\text{ K}$$
+- **Ý a) ĐÚNG:**  
+  Quá trình $(1) \\to (2)$ là quá trình biến đổi đẳng áp ($p_1 = p_2 = 3 \\cdot 10^5\\text{ Pa}$).  
+  Áp dụng định luật Gay-Lussac:  
+  $$\\frac{V_1}{T_1} = \\frac{V_2}{T_2} \\implies T_2 = T_1 \\cdot \\frac{V_2}{V_1} = 300 \\cdot \\frac{6}{2} = 900\\text{ K}$$
 
-- **b) ĐÚNG:** Công chất khí sinh ra trong quá trình đẳng áp:  
-$$A_{12}' = p_1 \\Delta V = 3 \\cdot 10^5 \\cdot (6 - 2) \\cdot 10^{-3} = 1200\\text{ J}$$
+- **Ý b) ĐÚNG:**  
+  Công chất khí sinh ra trong quá trình dãn nở đẳng áp:  
+  $$A_{12}' = p_1 \\cdot \\Delta V = 3 \\cdot 10^5 \\cdot (6 - 2) \\cdot 10^{-3} = 1200\\text{ J}$$
 
-- **c) SAI:** Quá trình $(2) \\to (3)$ là quá trình đẳng tích ($V = 6\\text{ lít}$), áp suất giảm.  
-Nhiệt độ trạng thái (3): $\\frac{p_2}{T_2} = \\frac{p_3}{T_3} \\implies T_3 = 900 \\cdot \\frac{10^5}{3 \\cdot 10^5} = 300\\text{ K}$.  
-Nhiệt độ giảm từ $900\\text{ K}$ xuống $300\\text{ K}$ nên nội năng của khối khí giảm: $\\Delta U_{23} < 0$.
+- **Ý c) SAI:**  
+  Quá trình $(2) \\to (3)$ là quá trình đẳng tích ($V = 6\\text{ lít}$), áp suất giảm.  
+  Nhiệt độ tại trạng thái $(3)$:  
+  $$\\frac{p_2}{T_2} = \\frac{p_3}{T_3} \\implies T_3 = 900 \\cdot \\frac{10^5}{3 \\cdot 10^5} = 300\\text{ K}$$  
+  Nhiệt độ giảm từ $900\\text{ K}$ xuống $300\\text{ K}$ nên nội năng của khối khí giảm: $\\Delta U_{23} < 0$.
 
-- **d) SAI:** Nội năng là hàm trạng thái, chỉ phụ thuộc vào trạng thái nhiệt động của hệ. Sau một chu trình khép kín, hệ trở về đúng trạng thái ban đầu (1) nên:  
-$$\\Delta U_{\\text{chu trình}} = 0$$`,
+- **Ý d) SAI:**  
+  Nội năng là hàm trạng thái, chỉ phụ thuộc vào trạng thái nhiệt động của hệ.  
+  Sau một chu trình khép kín, hệ trở về đúng trạng thái ban đầu $(1)$ nên:  
+  $$\\Delta U_{\\text{chu trình}} = U_1 - U_1 = 0$$`,
     source: 'Đề thi thử THPT Chuyên KHTN Hà Nội 2025',
     tags: ['Khí lý tưởng', 'Chu trình nhiệt', 'Công chất khí', 'P-V'],
   },
@@ -105,22 +116,34 @@ $$\\Delta U_{\\text{chu trình}} = 0$$`,
     saAnswer: '0,2',
     saTolerance: 0.01,
     solution: `**Phương pháp giải:**
-1. Diện tích một vòng dây: $S = a^2$
-2. Từ thông qua toàn bộ khung dây gồm $N$ vòng:
-   $$\\Phi = N \\cdot B \\cdot S \\cdot \\cos 0^\\circ = N B S$$
+
+1. Diện tích một mặt phẳng giới hạn bởi vòng dây:
+   $$S = a^2$$
+
+2. Từ thông qua toàn bộ khung dây gồm $N$ vòng dây:
+   $$\\Phi = N \\cdot B \\cdot S \\cdot \\cos 0^\\circ = N \\cdot B \\cdot S$$
+
 3. Độ biến thiên từ thông theo thời gian:
    $$\\Delta \\Phi = N \\cdot S \\cdot \\Delta B$$
+
 4. Độ lớn suất điện động cảm ứng (Định luật Faraday):
-   $$|e_c| = \\left|\\frac{\\Delta \\Phi}{\\Delta t}\\right| = N \\cdot S \\cdot \\frac{|B_2 - B_1|}{\\Delta t}$$
+   $$|e_c| = \\left| \\frac{\\Delta \\Phi}{\\Delta t} \\right| = N \\cdot S \\cdot \\frac{|B_2 - B_1|}{\\Delta t}$$
+
 5. Cường độ dòng điện cảm ứng trong khung dây (Định luật Ohm cho mạch kín):
    $$I_c = \\frac{|e_c|}{R}$$
 
-**Các bước tính toán:**
-- Diện tích 1 vòng: $S = (0{,}10\\text{ m})^2 = 0{,}01\\text{ m}^2 = 10^{-2}\\text{ m}^2$
-- Suất điện động cảm ứng:
+---
+
+**Các bước tính toán chi tiết:**
+
+- Diện tích của một vòng dây:
+  $$S = (0{,}10\\text{ m})^2 = 0{,}01\\text{ m}^2 = 10^{-2}\\text{ m}^2$$
+
+- Độ lớn suất điện động cảm ứng xuất hiện trong khung dây:
   $$|e_c| = 200 \\cdot 0{,}01 \\cdot \\frac{|0{,}2 - 0{,}8|}{0{,}15} = 2 \\cdot \\frac{0{,}6}{0{,}15} = 2 \\cdot 4 = 0{,}8\\text{ V}$$
-- Cường độ dòng điện cảm ứng:
-  $$I_c = \\frac{0{,}8}{4{,}0} = 0{,}2\\text{ A}$$
+
+- Cường độ dòng điện cảm ứng chạy qua khung dây:
+  $$I_c = \\frac{|e_c|}{R} = \\frac{0{,}8}{4{,}0} = 0{,}2\\text{ A}$$
 
 $\\implies$ **Đáp số:** **0,2**`,
     source: 'Đề khảo sát chất lượng Sở GD&ĐT Nam Định 2025',

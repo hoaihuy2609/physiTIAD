@@ -8,10 +8,10 @@ interface MathTextProps {
   content: string;
   className?: string;
   style?: React.CSSProperties;
+  inline?: boolean;
 }
 
-// Chuẩn hóa delimiters: Chuyển \[ ... \] và \( ... \) sang $$ ... $$ và $ ... $
-// Đồng thời xử lý các ký hiệu Vật Lý phổ biến
+// Chuẩn hóa delimiters & tiền xử lý LaTeX Vật lý
 const preprocessPhysicsLatex = (text: string): string => {
   if (!text) return '';
   return text
@@ -26,7 +26,7 @@ const katexOptions = {
   errorColor: '#dc2626',
   strict: false,
   macros: {
-    // Chuẩn hóa vectơ Vật lý thành mũi tên đầy đủ như MathTIAD & Sách giáo khoa
+    // Ký hiệu vectơ Vật lý chuẩn sách giáo khoa
     '\\vec': '\\overrightarrow{#1}',
     '\\va': '\\overrightarrow{a}',
     '\\vv': '\\overrightarrow{v}',
@@ -46,26 +46,33 @@ const katexOptions = {
   },
 };
 
-export const MathText: React.FC<MathTextProps> = ({ content, className, style }) => {
+export const MathText: React.FC<MathTextProps> = ({ content, className, style, inline = false }) => {
   const processedContent = useMemo(() => preprocessPhysicsLatex(content), [content]);
 
   if (!content) return null;
 
   return (
     <div
-      className={`prose prose-slate max-w-none math-renderer leading-relaxed font-normal ${className || ''}`}
+      className={`prose prose-slate max-w-none math-renderer font-normal ${className || ''}`}
       style={style}
     >
       <ReactMarkdown
         remarkPlugins={[remarkMath]}
         rehypePlugins={[[rehypeKatex, katexOptions], rehypeRaw]}
         components={{
-          p: ({ children }) => <span className="inline leading-relaxed">{children}</span>,
-          strong: ({ children }) => <strong className="font-semibold text-slate-900">{children}</strong>,
-          em: ({ children }) => <em className="italic">{children}</em>,
-          ul: ({ children }) => <ul className="list-disc pl-5 my-1 space-y-0.5">{children}</ul>,
-          ol: ({ children }) => <ol className="list-decimal pl-5 my-1 space-y-0.5">{children}</ol>,
-          li: ({ children }) => <li className="my-0.5">{children}</li>,
+          // Nếu ở chế độ inline (như trong nút chọn A, B, C, D) thì không bọc thẻ p tách đoạn
+          p: ({ children }) =>
+            inline ? (
+              <span className="inline leading-relaxed">{children}</span>
+            ) : (
+              <p className="my-2.5 leading-relaxed text-inherit">{children}</p>
+            ),
+          strong: ({ children }) => <strong className="font-semibold text-inherit">{children}</strong>,
+          em: ({ children }) => <em className="italic text-inherit">{children}</em>,
+          // Tăng khoảng cách giữa các mục danh sách để công thức toán không dính chùm vào nhau
+          ul: ({ children }) => <ul className="list-disc pl-5 my-3 space-y-2.5 text-inherit">{children}</ul>,
+          ol: ({ children }) => <ol className="list-decimal pl-5 my-3 space-y-3 text-inherit">{children}</ol>,
+          li: ({ children }) => <li className="my-1.5 leading-relaxed text-inherit">{children}</li>,
         }}
       >
         {processedContent}
